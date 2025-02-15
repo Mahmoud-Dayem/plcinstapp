@@ -1,0 +1,26 @@
+services:
+  nextjs-app:
+    image: mahmouddayem/plcinstapp:0.1.6
+    container_name: nextjs-app
+    environment:
+      - DB_HOST=mysql-service
+      - DB_USER=root
+      - DB_PASSWORD=ahli
+      - DB_NAME=plcinstdb
+    ports:
+      - '3000:3000'
+
+  mysql-service:
+    image: mysql:8.0  # Use the official MySQL image
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: ahli  # Root password
+      MYSQL_DATABASE: plcinstdb         # Default database to create
+      MYSQL_USER: eyad                 # Custodockm user
+      MYSQL_PASSWORD: ahli         # Custom user password
+    ports:
+      - "3306:3306"  # Map port 3306 on the host to port 3306 on the container
+    volumes:
+      - /db/mydb:/var/lib/mysql  # Persist MySQL data to a volume   
+
+

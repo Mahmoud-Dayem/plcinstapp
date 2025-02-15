@@ -1,0 +1,9 @@
+# was not able to run npm run dev due to permission issue
+#sudo chown -R $(whoami) /home/moh/plcInstProjct/instplcapp
+
+docker run -d -p 3000:3000 --name plcinstapp-container \
+-e DB_HOST=127.0.0.1 \
+-e DB_USER= root \
+-e DB_PASSWORD=ahli \
+-e DB_NAME=plcinstdb \
+mahmouddayem/plcinstapp:0.1.1
